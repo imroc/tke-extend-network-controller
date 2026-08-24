@@ -3,6 +3,8 @@ kind: Deployment
 {{- $environment := "prod" }}
 {{- if hasKey .Values "environment" }}
   {{- $environment = .Values.environment }}
+{{- else }}
+  {{- $environment = "prod" }}
 {{- end }}
 {{- if not (has $environment (list "prod" "test")) }}
 {{- fail "environment must be prod or test" }}
