@@ -1,6 +1,6 @@
 # 版本说明
 
-## v2.6.0 (2026-08-18)
+## v2.6.0 (2026-08-31)
 
 - 变更：新增 `environment` 配置，仅支持 `prod` 与 `test`，默认 `prod`，替代已移除的 `cloudAPI.endpointSuffix`；测试环境无需再通过域名后缀间接表达。
 - 修复：云 API 默认改走内网域名 `<service>.internal.tencentcloudapi.com`，并移除 chart 中固定解析云 API 域名的 hostAlias。此前默认使用公网域名并依赖 hostAlias 将其解析到内网 IP，访问密钥网络访问限制策略无法按“专有网络”策略识别该流量；改用内网域名后，可在访问密钥的专有网络策略中选择集群所在地域和 VPC，并放行控制器访问云 API 的 VPC 内网源 IP 或网段。域名解析交给集群 DNS，不再固化内网 API IP。
